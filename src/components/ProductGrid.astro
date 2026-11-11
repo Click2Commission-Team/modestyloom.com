@@ -1,0 +1,26 @@
+---
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  products: any[];
+  title?: string;
+  tagline?: string;
+}
+
+const { products, title = 'Curated Fashion Finds', tagline = 'Explore Our Editorial Picks' } = Astro.props;
+---
+
+<section style="padding: 3rem 0; background-color: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{title}</h2>
+      <a href="/products/" class="section-tagline">{tagline} →</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      {products.map((prod) => (
+        <ProductCard product={prod} />
+      ))}
+    </div>
+  </div>
+</section>

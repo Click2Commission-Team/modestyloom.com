@@ -1,0 +1,78 @@
+---
+---
+
+<div class="search-modal-backdrop" id="searchModal">
+  <div class="search-modal-box">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+      <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-gold);">
+        Search ModestyLoom Editorial
+      </span>
+      <button id="closeSearchBtn" style="font-size: 1.25rem; color: var(--text-muted); padding: 0.25rem;" aria-label="Close search">
+        ✕
+      </button>
+    </div>
+
+    <form action="/search/" method="get">
+      <input 
+        type="search" 
+        name="q" 
+        id="modalSearchInput" 
+        class="search-input-field" 
+        placeholder="Type to search trends, dresses, jackets, styling tips..." 
+        autocomplete="off"
+        required
+      />
+    </form>
+
+    <div style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+      <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Popular:</span>
+      <a href="/search/?q=trench" class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem;">Trench Coat</a>
+      <a href="/search/?q=boots" class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem;">Chelsea Boots</a>
+      <a href="/search/?q=capsule" class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem;">Capsule Wardrobe</a>
+      <a href="/search/?q=skincare" class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem;">Skincare Barrier</a>
+      <a href="/search/?q=smart+casual" class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem;">Smart Casual</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const searchModal = document.getElementById('searchModal');
+  const triggerBtn = document.getElementById('searchTriggerBtn');
+  const closeBtn = document.getElementById('closeSearchBtn');
+  const searchInput = document.getElementById('modalSearchInput');
+
+  function openSearch() {
+    if (searchModal && searchInput) {
+      searchModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => searchInput.focus(), 150);
+    }
+  }
+
+  function closeSearch() {
+    if (searchModal) {
+      searchModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (triggerBtn) triggerBtn.addEventListener('click', openSearch);
+  if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+
+  if (searchModal) {
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) closeSearch();
+    });
+  }
+
+  // Keyboard shortcut Ctrl/Cmd + K
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+    if (e.key === 'Escape' && searchModal?.classList.contains('open')) {
+      closeSearch();
+    }
+  });
+</script>

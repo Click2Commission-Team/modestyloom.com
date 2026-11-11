@@ -1,0 +1,184 @@
+/* Foxiz-inspired Animation Suite for ModestyLoom */
+
+/* Continuous Horizontal Running Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 2rem;
+  animation: marqueeContinuous 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-content-reverse {
+  display: inline-flex;
+  gap: 2rem;
+  animation: marqueeReverse 36s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-content-reverse {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeContinuous {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Card Zoom & Image Hover Dynamics */
+.image-zoom-container {
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface);
+}
+
+.image-zoom-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.card-hover:hover .image-zoom-container img {
+  transform: scale(1.06);
+  filter: brightness(0.96);
+}
+
+/* Story Highlight Circle Pulse Animation */
+.story-circle-avatar {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 3.5px;
+  background: linear-gradient(135deg, #c5a880, #e6c89f, #9e7a4a, #c45b41);
+  background-size: 200% 200%;
+  animation: gradientRotate 6s ease infinite;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.story-circle-avatar:hover {
+  transform: scale(1.05);
+}
+
+.story-circle-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--bg-primary);
+}
+
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle Card Elevation */
+.card-elevation {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-elevation:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Button Pulse / Glow */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-gold);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(197, 168, 128, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content,
+  .marquee-content-reverse,
+  .story-circle-avatar {
+    animation: none !important;
+  }
+  .image-zoom-container img,
+  .card-elevation,
+  .btn-primary,
+  .btn-secondary {
+    transition: none !important;
+    transform: none !important;
+  }
+}

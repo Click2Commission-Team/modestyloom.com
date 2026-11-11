@@ -1,0 +1,93 @@
+---
+import { formatDate } from '../utils/helpers.js';
+
+interface Props {
+  post: any;
+  layout?: 'horizontal' | 'vertical' | 'overlay';
+}
+
+const { post, layout = 'vertical' } = Astro.props;
+---
+
+{layout === 'vertical' && (
+  <article class="card-hover card-elevation" style="background-color: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column;">
+    <a href={`/blog/${post.slug}/`} class="image-zoom-container" style="height: 220px; display: block;">
+      <img src={post.data.featuredImage} alt={post.data.imageAlt} loading="lazy" width="400" height="260" />
+    </a>
+    <div style="padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; justify-content: space-between;">
+      <div>
+        <a href={`/categories/${post.data.categorySlug}/`} class="cat-badge" style="font-size: 0.65rem; padding: 0.2rem 0.55rem; margin-bottom: 0.5rem;">
+          {post.data.category}
+        </a>
+        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.4rem;">
+          <a href={`/blog/${post.slug}/`} style="color: var(--text-primary); transition: color var(--transition-fast);">
+            {post.data.title}
+          </a>
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+          {post.data.excerpt}
+        </p>
+      </div>
+
+      <div class="post-meta" style="padding-top: 0.75rem; border-top: 1px solid var(--border-subtle);">
+        <span class="meta-author">By {post.data.author === 'shivam' ? 'Shivam' : 'Tanisha'}</span>
+        <span class="meta-sep"></span>
+        <span>{formatDate(post.data.publishedDate)}</span>
+        <span class="meta-sep"></span>
+        <span>{post.data.readingTime}</span>
+      </div>
+    </div>
+  </article>
+)}
+
+{layout === 'horizontal' && (
+  <article class="article-card" style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-subtle);">
+    <a href={`/blog/${post.slug}/`} class="article-card-thumb">
+      <img src={post.data.featuredImage} alt={post.data.imageAlt} loading="lazy" width="140" height="120" />
+    </a>
+    <div class="article-card-info">
+      <a href={`/categories/${post.data.categorySlug}/`} class="cat-badge" style="align-self: flex-start; font-size: 0.65rem; padding: 0.18rem 0.5rem;">
+        {post.data.category}
+      </a>
+      <h3 class="article-card-title">
+        <a href={`/blog/${post.slug}/`}>
+          {post.data.title}
+        </a>
+      </h3>
+      <div class="post-meta">
+        <span>{formatDate(post.data.publishedDate)}</span>
+        <span class="meta-sep"></span>
+        <span>{post.data.readingTime}</span>
+      </div>
+    </div>
+  </article>
+)}
+
+{layout === 'overlay' && (
+  <article class="card-hover" style="position: relative; height: 320px; border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: #ffffff;">
+    <img 
+      src={post.data.featuredImage} 
+      alt={post.data.imageAlt} 
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);" 
+      loading="lazy" 
+      width="400" 
+      height="320" 
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 16, 20, 0.1) 0%, rgba(14, 16, 20, 0.88) 100%); z-index: 1;"></div>
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 0.5rem;">
+      <span class="cat-badge gold" style="align-self: flex-start; font-size: 0.65rem;">
+        {post.data.category}
+      </span>
+      <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.3; color: #ffffff;">
+        <a href={`/blog/${post.slug}/`}>
+          {post.data.title}
+        </a>
+      </h3>
+      <div class="post-meta" style="color: #cbd5e1; font-size: 0.78rem;">
+        <span style="color: #ffffff;">By {post.data.author === 'shivam' ? 'Shivam' : 'Tanisha'}</span>
+        <span class="meta-sep" style="background-color: #cbd5e1;"></span>
+        <span>{formatDate(post.data.publishedDate)}</span>
+      </div>
+    </div>
+  </article>
+)}

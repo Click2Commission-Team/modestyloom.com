@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoriesSection from '../components/StoriesSection.astro';
+import HeroSection from '../components/HeroSection.astro';
+import TrendingSection from '../components/TrendingSection.astro';
+import EditorsChoice from '../components/EditorsChoice.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import Sidebar from '../components/Sidebar.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { products } from '../data/products.js';
+import { generateWebsiteSchema } from '../utils/schema.js';
+
+// Retrieve articles
+const allPosts = await getCollection('blogs');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishedDate).getTime() - new Date(a.data.publishedDate).getTime());
+
+const mainHeroPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
+const secondaryHeroPosts = sortedPosts.filter(p => p.slug !== mainHeroPost.slug).slice(0, 3);
+const trendingPosts = sortedPosts.filter(p => p.data.trending).slice(0, 6);
+const editorsPicks = sortedPosts.filter(p => p.data.editorChoice).slice(0, 4);
+const latestFeed = sortedPosts.slice(4, 10);
+const popularRanking = sortedPosts.slice(0, 5);
+
+const homeSchema = generateWebsiteSchema();
+---
+
+<BaseLayout
+  title="ModestyLoom — The Premier Fashion, E-Commerce & Styling Publication"
+  description="Discover curated runway trends, modern modest outfits, luxury menswear, everyday beauty rituals, footwear, and verified shopping guides."
+  schema={homeSchema}
+>
+  <!-- 1. Interactive Web Stories / Circles Strip -->
+  <StoriesSection />
+
+  <!-- 2. Dominant Editorial Hero Section -->
+  <HeroSection mainPost={mainHeroPost} secondaryPosts={secondaryHeroPosts} />
+
+  <!-- 3. Curated Shopping & Product Discovery Showcase -->
+  <ProductGrid products={products.slice(0, 4)} title="Curated Wardrobe Investment Drops" tagline="Browse Full Lookbook" />
+
+  <!-- 4. Trending Stories Section -->
+  <TrendingSection posts={trendingPosts} />
+
+  <!-- 5. Editor's Choice High-Impact Overlay Grid -->
+  <EditorsChoice posts={editorsPicks} />
+
+  <!-- 6. Main Feed + Editorial Sidebar Layout (Foxiz Magazine Style) -->
+  <section style="padding: 4rem 0;">
+    <div class="container" style="display: grid; grid-template-columns: 2.3fr 1fr; gap: 3.5rem;">
+      <div>
+        <div class="section-header">
+          <h2 class="section-title">Latest Editorial Stories</h2>
+          <a href="/blog/" class="section-tagline">View Full Archive →</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          {latestFeed.map((post) => (
+            <ArticleCard post={post} layout="horizontal" />
+          ))}
+        </div>
+
+        <div style="margin-top: 2.5rem; text-align: center;">
+          <a href="/blog/" class="btn-secondary" style="padding: 0.85rem 2.5rem;">
+            Explore All 32+ Guides
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <Sidebar popularPosts={popularRanking} />
+    </div>
+  </section>
+</BaseLayout>

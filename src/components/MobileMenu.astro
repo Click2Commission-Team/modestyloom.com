@@ -1,0 +1,71 @@
+---
+import { navItems } from '../data/navigation.js';
+---
+
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+  <div class="mobile-drawer-content">
+    <div>
+      <div class="mobile-drawer-header">
+        <a href="/" class="modesty-logo" style="font-size: 1.5rem;">
+          Modesty<span class="logo-accent">Loom</span>
+        </a>
+        <button id="closeDrawerBtn" aria-label="Close menu" style="padding: 0.5rem; font-size: 1.25rem;">
+          ✕
+        </button>
+      </div>
+
+      <nav class="mobile-nav-list">
+        {navItems.map((item) => (
+          <div>
+            <a href={item.href} class="mobile-nav-link">
+              {item.label}
+            </a>
+            {item.subItems && (
+              <div style="padding-left: 0.75rem; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                {item.subItems.map((sub) => (
+                  <a href={sub.href} style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.25rem 0;">
+                    {sub.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    <div style="padding-top: 2rem; border-top: 1px solid var(--border-light); margin-top: 2rem;">
+      <a href="/products/" class="btn-primary" style="width: 100%; text-align: center;">
+        Explore Collections
+      </a>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+        © {new Date().getFullYear()} ModestyLoom Editorial
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('mobileMenuBtn');
+  const closeBtn = document.getElementById('closeDrawerBtn');
+  const drawer = document.getElementById('mobileDrawerOverlay');
+
+  if (openBtn && drawer && closeBtn) {
+    openBtn.addEventListener('click', () => {
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) {
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+</script>

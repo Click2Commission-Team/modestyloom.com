@@ -1,0 +1,261 @@
+/* Global Design System for ModestyLoom (Foxiz-inspired Editorial Fashion) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette - Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fbfbfb;
+  --bg-surface: #f4f5f7;
+  --bg-dark-accent: #0f1115;
+  --text-primary: #121417;
+  --text-secondary: #5a6270;
+  --text-muted: #8c93a0;
+  --accent-gold: #c5a880;
+  --accent-gold-hover: #b09167;
+  --accent-terracotta: #c45b41;
+  --border-light: rgba(18, 20, 23, 0.08);
+  --border-subtle: rgba(18, 20, 23, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Typography Variables */
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Layout */
+  --max-width: 1360px;
+  --header-height: 80px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Animations */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='dark'] {
+  --bg-primary: #0e1014;
+  --bg-secondary: #14171d;
+  --bg-surface: #1b1f26;
+  --text-primary: #f5f6f8;
+  --text-secondary: #a2a8b5;
+  --text-muted: #6e7482;
+  --accent-gold: #d8b890;
+  --accent-gold-hover: #e5cbab;
+  --border-light: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset and Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 1rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 1rem;
+  }
+}
+
+/* Text Logo Styling */
+.modesty-logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  position: relative;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  user-select: none;
+  line-height: 1;
+}
+
+.modesty-logo .logo-accent {
+  color: var(--accent-gold);
+  font-weight: 400;
+  font-style: italic;
+  font-family: serif;
+  margin-left: 2px;
+}
+
+.modesty-logo:hover {
+  transform: scale(1.01);
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .modesty-logo {
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Section Title Headers (Foxiz Style) */
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--text-primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+[data-theme='dark'] .section-header {
+  border-bottom-color: var(--text-primary);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-gold);
+  border-radius: var(--radius-full);
+}
+
+.section-tagline {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.section-tagline:hover {
+  color: var(--text-primary);
+}
+
+/* Category Badge (Foxiz Pill Style) */
+.cat-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cat-badge:hover {
+  background-color: var(--accent-gold);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.cat-badge.gold {
+  background-color: var(--accent-gold);
+  color: #ffffff;
+}
+
+/* Meta Data */
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.post-meta .meta-author {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.post-meta .meta-sep {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  background-color: var(--text-muted);
+  border-radius: var(--radius-full);
+}

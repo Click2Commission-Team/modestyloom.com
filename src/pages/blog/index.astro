@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
+
+const allPosts = await getCollection('blogs');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishedDate).getTime() - new Date(a.data.publishedDate).getTime());
+const popularPosts = sortedPosts.slice(0, 5);
+---
+
+<BaseLayout
+  title="Editorial Journal & Archives — ModestyLoom"
+  description="Explore the comprehensive archive of fashion analysis, seasonal styling guides, trend forecasts, and product discoveries from ModestyLoom."
+>
+  <div style="background-color: var(--bg-surface); padding: 3.5rem 0; border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <h1 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.5rem;">
+        The Editorial Journal
+      </h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 650px;">
+        All 32 in-depth guides, trend dissections, styling blueprints, and e-commerce shopping directories.
+      </p>
+    </div>
+  </div>
+
+  <section class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+    <div style="display: grid; grid-template-columns: 2.3fr 1fr; gap: 3.5rem;">
+      <div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+          {sortedPosts.map((post) => (
+            <ArticleCard post={post} layout="vertical" />
+          ))}
+        </div>
+      </div>
+
+      <Sidebar popularPosts={popularPosts} />
+    </div>
+  </section>
+</BaseLayout>

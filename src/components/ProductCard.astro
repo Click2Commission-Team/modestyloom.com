@@ -1,0 +1,46 @@
+---
+interface Props {
+  product: any;
+}
+
+const { product } = Astro.props;
+---
+
+<div class="product-card">
+  {product.discount && (
+    <span class="product-badge">{product.discount}</span>
+  )}
+
+  <a href={`/products/${product.slug}/`} class="product-image-wrap">
+    <img src={product.image} alt={product.title} loading="lazy" width="300" height="240" />
+  </a>
+
+  <div class="product-info">
+    <span class="product-brand">{product.brand}</span>
+    <h4 class="product-title">
+      <a href={`/products/${product.slug}/`}>{product.title}</a>
+    </h4>
+    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+      {product.excerpt}
+    </p>
+
+    <div class="product-price-row">
+      <span class="product-price">{product.price}</span>
+      {product.originalPrice && (
+        <span class="product-original-price">{product.originalPrice}</span>
+      )}
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 700; color: var(--accent-gold);">
+        ★ {product.rating} <span style="font-weight: 400; color: var(--text-muted); font-size: 0.72rem;">({product.reviewsCount})</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+    <a href={`/products/${product.slug}/`} class="btn-secondary" style="flex: 1; padding: 0.55rem; font-size: 0.78rem;">
+      Full Specs
+    </a>
+    <a href={product.externalUrl} target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex: 1; padding: 0.55rem; font-size: 0.78rem;">
+      Shop Now ↗
+    </a>
+  </div>
+</div>

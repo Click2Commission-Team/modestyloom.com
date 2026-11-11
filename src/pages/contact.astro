@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Contact the Editorial Desk — ModestyLoom"
+  description="Get in touch with the ModestyLoom editorial team for press inquiries, styling consultations, brand partnerships, or editorial corrections."
+>
+  <div style="background-color: var(--bg-surface); padding: 4rem 0; border-bottom: 1px solid var(--border-light);">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <span class="cat-badge gold" style="margin-bottom: 1rem;">Direct Inquiries</span>
+      <h1 style="font-family: var(--font-heading); font-size: 2.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem;">
+        Contact ModestyLoom
+      </h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6;">
+        Have a story tip, designer feature recommendation, or feedback on our shopping guides? Our editorial team reviews every correspondence.
+      </p>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: 800px; padding-top: 4rem; padding-bottom: 5rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3.5rem;">
+      <div style="background-color: var(--bg-surface); padding: 2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">
+          Editorial Desk
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+          For pitches, runway commentary, and story proposals:
+        </p>
+        <span style="font-weight: 700; color: var(--accent-gold); font-size: 1rem;">editorial@modestyloom.com</span>
+      </div>
+
+      <div style="background-color: var(--bg-surface); padding: 2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">
+          Brand & Product Samples
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+          For ethical ateliers, lookbook reviews, and affiliate partnerships:
+        </p>
+        <span style="font-weight: 700; color: var(--accent-gold); font-size: 1rem;">partnerships@modestyloom.com</span>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div style="background-color: var(--bg-primary); padding: 2.5rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase;">
+        Send a Message
+      </h2>
+      <form onsubmit="event.preventDefault(); alert('Thank you for contacting ModestyLoom Editorial. Your message has been received.');" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Your Name</label>
+          <input type="text" required class="search-input-field" style="font-size: 1rem; padding: 0.75rem 1rem;" placeholder="e.g. Eleanor Vance" />
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Email Address</label>
+          <input type="email" required class="search-input-field" style="font-size: 1rem; padding: 0.75rem 1rem;" placeholder="e.g. eleanor@example.com" />
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Subject / Inquired Topic</label>
+          <input type="text" required class="search-input-field" style="font-size: 1rem; padding: 0.75rem 1rem;" placeholder="e.g. Editorial Question Regarding Trench Sizing" />
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Your Message</label>
+          <textarea rows="5" required class="search-input-field" style="font-size: 1rem; padding: 0.75rem 1rem; resize: vertical;" placeholder="Write your message here..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="padding: 1rem; align-self: flex-start;">
+          Submit Inquiry →
+        </button>
+      </form>
+    </div>
+  </div>
+</BaseLayout>

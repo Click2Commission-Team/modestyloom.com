@@ -1,0 +1,25 @@
+---
+const stories = [
+  { label: 'Italian Fashion', img: '/images/stories/story-1.jpg', href: '/categories/fashion-trends/' },
+  { label: 'Summer Outfits', img: '/images/stories/story-2.jpg', href: '/categories/womens-fashion/' },
+  { label: 'Capsule Wardrobe', img: '/images/stories/story-3.jpg', href: '/categories/sustainable-fashion/' },
+  { label: 'Tailored Men', img: '/images/stories/story-4.jpg', href: '/categories/mens-fashion/' },
+  { label: 'Bag Trends', img: '/images/stories/story-5.jpg', href: '/categories/accessories-jewellery/' },
+  { label: 'Footwear Edits', img: '/images/stories/story-6.jpg', href: '/categories/footwear/' }
+];
+---
+
+<section class="stories-section">
+  <div class="container">
+    <div class="stories-track">
+      {stories.map((story) => (
+        <a href={story.href} class="story-item">
+          <div class="story-circle-avatar">
+            <img src={story.img} alt={story.label} width="110" height="110" loading="lazy" />
+          </div>
+          <span class="story-label">{story.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

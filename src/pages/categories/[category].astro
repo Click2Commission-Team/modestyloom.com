@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import { categories, getCategoryBySlug } from '../../data/categories.js';
+import { products } from '../../data/products.js';
+import { generateBreadcrumbSchema } from '../../utils/schema.js';
+
+export async function getStaticPaths() {
+  return categories.map(cat => ({
+    params: { category: cat.slug },
+    props: { category: cat }
+  }));
+}
+
+const { category } = Astro.props;
+const allPosts = await getCollection('blogs');
+const categoryPosts = allPosts.filter(p => p.data.categorySlug === category.slug);
+const popularPosts = allPosts.slice(0, 5);
+const categoryProducts = products.filter(p => p.categorySlug === category.slug);
+
+const breadcrumbsSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: category.name, url: `/categories/${category.slug}/` }
+]);
+---
+
+<BaseLayout
+  title={`${category.name} — ModestyLoom Editorial`}
+  description={category.description}
+  image={category.image}
+  schema={breadcrumbsSchema}
+>
+  <!-- Category Header Banner -->
+  <div style="background-color: var(--bg-surface); padding: 3.5rem 0; border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <nav style="display: flex; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;">
+        <a href="/" style="color: var(--text-primary);">Home</a>
+        <span>/</span>
+        <span style="color: var(--accent-gold);">{category.name}</span>
+      </nav>
+
+      <h1 style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-primary); margin-bottom: 0.75rem;">
+        {category.name}
+      </h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 750px; line-height: 1.6; margin-bottom: 1.75rem;">
+        {category.description}
+      </p>
+
+      <!-- Subcategory Pills -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        {category.subcategories.map((sub) => (
+          <span class="cat-badge" style="background-color: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-light); font-size: 0.75rem;">
+            {sub}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Articles Grid + Sidebar -->
+  <section class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+    <div style="display: grid; grid-template-columns: 2.3fr 1fr; gap: 3.5rem;">
+      <div>
+        <div class="section-header">
+          <h2 class="section-title">{category.name} Articles ({categoryPosts.length})</h2>
+          <span class="section-tagline">Curated Editorial</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+          {categoryPosts.map((post) => (
+            <ArticleCard post={post} layout="vertical" />
+          ))}
+        </div>
+      </div>
+
+      <Sidebar popularPosts={popularPosts} />
+    </div>
+  </section>
+
+  <!-- Relevant Products if any -->
+  {categoryProducts.length > 0 && (
+    <ProductGrid products={categoryProducts} title={`Featured ${category.name} Essentials`} />
+  )}
+</BaseLayout>

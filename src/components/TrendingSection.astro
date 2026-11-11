@@ -1,0 +1,24 @@
+---
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section style="padding: 3rem 0;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Trending Stories</h2>
+      <a href="/categories/fashion-trends/" class="section-tagline">View All Trends →</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+      {posts.map((post) => (
+        <ArticleCard post={post} layout="vertical" />
+      ))}
+    </div>
+  </div>
+</section>

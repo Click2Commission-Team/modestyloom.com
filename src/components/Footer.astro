@@ -1,0 +1,110 @@
+---
+import { siteConfig } from '../data/site.js';
+import { categories } from '../data/categories.js';
+
+const lookbookImages = [
+  '/images/fashion/post-1.jpg',
+  '/images/fashion/post-2.jpg',
+  '/images/fashion/post-3.jpg',
+  '/images/fashion/post-4.jpg',
+  '/images/fashion/post-5.jpg',
+  '/images/fashion/post-6.jpg',
+  '/images/fashion/post-7.jpg',
+  '/images/fashion/post-8.jpg'
+];
+---
+
+<!-- Lookbook Horizontal Continuous Marquee Strip (Foxiz Footer Style) -->
+<div class="footer-lookbook-strip">
+  <div class="lookbook-title">
+    @ModestyLoom • Editorial Lookbook
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-content">
+      {lookbookImages.map((img) => (
+        <div class="lookbook-item">
+          <img src={img} alt="ModestyLoom Lookbook Fashion Inspiration" loading="lazy" width="190" height="240" />
+        </div>
+      ))}
+      {lookbookImages.map((img) => (
+        <div class="lookbook-item">
+          <img src={img} alt="ModestyLoom Lookbook Fashion Inspiration" loading="lazy" width="190" height="240" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- Main High-Fashion Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand & Mission Column -->
+      <div>
+        <a href="/" class="modesty-logo" style="color: #ffffff; margin-bottom: 1.25rem;">
+          Modesty<span class="logo-accent">Loom</span>
+        </a>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #a2a8b5; margin-bottom: 1.5rem;">
+          {siteConfig.description}
+        </p>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" class="action-icon-btn" style="background-color: rgba(255,255,255,0.06); color: #ffffff;" aria-label="Instagram">
+            IG
+          </a>
+          <a href={siteConfig.social.pinterest} target="_blank" rel="noopener noreferrer" class="action-icon-btn" style="background-color: rgba(255,255,255,0.06); color: #ffffff;" aria-label="Pinterest">
+            PIN
+          </a>
+          <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer" class="action-icon-btn" style="background-color: rgba(255,255,255,0.06); color: #ffffff;" aria-label="Twitter">
+            X
+          </a>
+        </div>
+      </div>
+
+      <!-- Categories Column -->
+      <div>
+        <h4 class="footer-col-title">Fashion Edits</h4>
+        <div class="footer-links">
+          {categories.slice(0, 5).map((cat) => (
+            <a href={`/categories/${cat.slug}/`}>{cat.name}</a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Discovery & Guides Column -->
+      <div>
+        <h4 class="footer-col-title">Discovery</h4>
+        <div class="footer-links">
+          {categories.slice(5, 8).map((cat) => (
+            <a href={`/categories/${cat.slug}/`}>{cat.name}</a>
+          ))}
+          <a href="/products/">Curated Products</a>
+          <a href="/search/">Search Archive</a>
+          <a href="/rss.xml">RSS Feed</a>
+        </div>
+      </div>
+
+      <!-- Editorial & Policies Column -->
+      <div>
+        <h4 class="footer-col-title">Editorial & Trust</h4>
+        <div class="footer-links">
+          <a href="/about/">About ModestyLoom</a>
+          <a href="/authors/tanisha/">Meet Tanisha (Editor)</a>
+          <a href="/authors/shivam/">Meet Shivam (Editor)</a>
+          <a href="/contact/">Editorial Contact</a>
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms-and-conditions/">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Cloudflare Indicator -->
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved. Crafted for high-speed static delivery on Cloudflare Pages.</p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="/privacy-policy/">Privacy</a>
+        <a href="/terms-and-conditions/">Terms</a>
+        <a href="/sitemap-index.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

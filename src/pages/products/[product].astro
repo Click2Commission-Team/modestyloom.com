@@ -1,0 +1,132 @@
+---
+import { products } from '../../data/products.js';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { generateProductSchema, generateBreadcrumbSchema } from '../../utils/schema.js';
+
+export async function getStaticPaths() {
+  return products.map(product => ({
+    params: { product: product.slug },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+const similarProducts = products.filter(p => p.slug !== product.slug).slice(0, 3);
+
+const productSchema = generateProductSchema(product);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Products', url: '/products/' },
+  { name: product.title, url: `/products/${product.slug}/` }
+]);
+
+const combinedSchema = `[${productSchema}, ${breadcrumbSchema}]`;
+---
+
+<BaseLayout
+  title={`${product.title} — ModestyLoom Discovery`}
+  description={product.description}
+  image={product.image}
+  schema={combinedSchema}
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+    <!-- Breadcrumbs -->
+    <nav style="display: flex; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem;">
+      <a href="/" style="color: var(--text-primary);">Home</a>
+      <span>/</span>
+      <a href="/products/" style="color: var(--text-primary);">Curated Products</a>
+      <span>/</span>
+      <span style="color: var(--accent-gold);">{product.brand}</span>
+    </nav>
+
+    <!-- Product Showcase Grid -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 3.5rem; margin-bottom: 4rem;">
+      <!-- Image Showcase -->
+      <div style="border-radius: var(--radius-sm); overflow: hidden; background-color: var(--bg-surface); height: 500px;">
+        <img src={product.image} alt={product.title} style="width: 100%; height: 100%; object-fit: cover;" width="600" height="500" fetchpriority="high" />
+      </div>
+
+      <!-- Details Column -->
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <span class="cat-badge gold" style="align-self: flex-start;">
+          {product.category}
+        </span>
+        <span style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-gold);">
+          {product.brand}
+        </span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; line-height: 1.25; color: var(--text-primary);">
+          {product.title}
+        </h1>
+
+        <div style="display: flex; align-items: baseline; gap: 1rem;">
+          <span style="font-size: 2rem; font-weight: 800; color: var(--text-primary);">{product.price}</span>
+          {product.originalPrice && (
+            <span style="font-size: 1.2rem; text-decoration: line-through; color: var(--text-muted);">{product.originalPrice}</span>
+          )}
+          {product.discount && (
+            <span class="product-badge" style="position: static;">{product.discount}</span>
+          )}
+        </div>
+
+        <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7;">
+          {product.description}
+        </p>
+
+        <!-- Specifications Table -->
+        <div style="margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.5rem;">
+          <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">
+            Garment Specifications & Origin
+          </h4>
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 0.5rem 0; font-weight: 700; color: var(--text-primary); width: 35%;">{key}</td>
+                <td style="padding: 0.5rem 0; color: var(--text-secondary);">{val}</td>
+              </tr>
+            ))}
+          </table>
+        </div>
+
+        <!-- Pros & Cons -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+          <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm);">
+            <span style="font-weight: 800; font-size: 0.8rem; color: #16a34a; text-transform: uppercase;">Pros</span>
+            <ul style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.35rem;">
+              {product.pros.map((p) => <li>✓ {p}</li>)}
+            </ul>
+          </div>
+          <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm);">
+            <span style="font-weight: 800; font-size: 0.8rem; color: #ea580c; text-transform: uppercase;">Cons</span>
+            <ul style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.35rem;">
+              {product.cons.map((c) => <li>✕ {c}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div style="margin-top: 1.5rem;">
+          <a href={product.externalUrl} target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; text-align: center; padding: 1rem;">
+            Visit Retailer Official Shop ↗
+          </a>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.6rem; text-align: center;">
+            Editorial Disclosure: ModestyLoom curates independent reviews. When purchasing through our verified links, we may earn an affiliate commission at no extra cost to you.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar Products -->
+    <div style="border-top: 1px solid var(--border-light); padding-top: 3.5rem;">
+      <div class="section-header">
+        <h2 class="section-title">Similar Curated Discoveries</h2>
+        <a href="/products/" class="section-tagline">View Full Edit →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+        {similarProducts.map((p) => (
+          <ProductCard product={p} />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+import { formatDate } from '../utils/helpers.js';
+
+interface Props {
+  mainPost: any;
+  secondaryPosts: any[];
+}
+
+const { mainPost, secondaryPosts } = Astro.props;
+---
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Main Featured Hero Editorial -->
+      {mainPost && (
+        <a href={`/blog/${mainPost.slug}/`} class="hero-main-card">
+          <img 
+            src={mainPost.data.featuredImage} 
+            alt={mainPost.data.imageAlt} 
+            class="hero-bg-img" 
+            fetchpriority="high" 
+            loading="eager" 
+            width="800" 
+            height="550" 
+          />
+          <div class="hero-overlay"></div>
+          <div class="hero-main-content">
+            <span class="cat-badge gold" style="align-self: flex-start;">
+              {mainPost.data.category}
+            </span>
+            <h1 class="hero-main-title">
+              {mainPost.data.title}
+            </h1>
+            <p style="color: #e2e8f0; font-size: 0.95rem; max-width: 650px; line-height: 1.5;">
+              {mainPost.data.excerpt}
+            </p>
+            <div class="post-meta" style="color: #cbd5e1;">
+              <span class="meta-author" style="color: #ffffff;">By {mainPost.data.author === 'shivam' ? 'Shivam' : 'Tanisha'}</span>
+              <span class="meta-sep" style="background-color: #cbd5e1;"></span>
+              <span>{formatDate(mainPost.data.publishedDate)}</span>
+              <span class="meta-sep" style="background-color: #cbd5e1;"></span>
+              <span>{mainPost.data.readingTime}</span>
+            </div>
+          </div>
+        </a>
+      )}
+
+      <!-- Secondary Stacked Articles -->
+      <div class="hero-secondary-list">
+        {secondaryPosts.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="article-card">
+            <div class="article-card-thumb">
+              <img src={post.data.featuredImage} alt={post.data.imageAlt} loading="eager" width="140" height="120" />
+            </div>
+            <div class="article-card-info">
+              <span class="cat-badge" style="align-self: flex-start; font-size: 0.65rem; padding: 0.2rem 0.55rem;">
+                {post.data.category}
+              </span>
+              <h2 class="article-card-title">
+                {post.data.title}
+              </h2>
+              <div class="post-meta">
+                <span>{formatDate(post.data.publishedDate)}</span>
+                <span class="meta-sep"></span>
+                <span>{post.data.readingTime}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
