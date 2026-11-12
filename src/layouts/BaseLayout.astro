@@ -59,8 +59,20 @@ const fullImageUrl = image.startsWith('http') ? image : `${siteConfig.url}${imag
 
     <!-- JSON-LD Structured Data Schema -->
     {schema && <script type="application/ld+json" set:html={schema} />}
+
+    <!-- Google Tag Manager / Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5J5PH8ST"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J5PH8ST"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <main style="flex: 1;">
       <slot />
