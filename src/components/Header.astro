@@ -40,9 +40,9 @@ import { navItems } from '../data/navigation.js';
       </svg>
     </button>
 
-    <!-- Text-Based Distinctive Logo -->
-    <a href="/" class="modesty-logo" aria-label="ModestyLoom Home">
-      Modesty<span class="logo-accent">Loom</span>
+    <!-- Distinctive Brand Logo -->
+    <a href="/" class="modesty-logo-brand" aria-label="ModestyLoom Home">
+      <img src={siteConfig.logo?.image || '/logo.png'} alt={siteConfig.name} class="modesty-logo-img" width="195" height="40" loading="eager" fetchpriority="high" />
     </a>
 
     <!-- Desktop Navigation Menu with Dropdowns -->

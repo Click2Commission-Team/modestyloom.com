@@ -5,6 +5,11 @@ export const siteConfig = {
   description: 'ModestyLoom is an authoritative fashion publication and shopping discovery journal covering seasonal trends, wardrobe curation, styling guides, beauty essentials, and verified product reviews.',
   url: 'https://modestyloom.com',
   logoText: 'ModestyLoom',
+  logo: {
+    image: '/logo.png',
+    imageLight: '/logo-light.png',
+    text: 'ModestyLoom'
+  },
   social: {
     instagram: 'https://instagram.com/modestyloom',
     pinterest: 'https://pinterest.com/modestyloom',

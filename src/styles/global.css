@@ -123,6 +123,34 @@ ul, ol {
   }
 }
 
+/* Brand Image Logo Styling */
+.modesty-logo-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.modesty-logo-brand:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.modesty-logo-img {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+.modesty-logo-footer .modesty-logo-img {
+  height: 40px;
+  max-width: 210px;
+}
+
 /* Text Logo Styling */
 .modesty-logo {
   display: inline-flex;

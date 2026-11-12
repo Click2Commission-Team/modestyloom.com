@@ -41,8 +41,8 @@ const lookbookImages = [
     <div class="footer-grid">
       <!-- Brand & Mission Column -->
       <div>
-        <a href="/" class="modesty-logo" style="color: #ffffff; margin-bottom: 1.25rem;">
-          Modesty<span class="logo-accent">Loom</span>
+        <a href="/" class="modesty-logo-brand modesty-logo-footer" aria-label="ModestyLoom Home" style="margin-bottom: 1.25rem;">
+          <img src={siteConfig.logo?.imageLight || '/logo-light.png'} alt={siteConfig.name} class="modesty-logo-img modesty-logo-img-light" width="195" height="40" loading="lazy" />
         </a>
         <p style="font-size: 0.9rem; line-height: 1.6; color: #a2a8b5; margin-bottom: 1.5rem;">
           {siteConfig.description}

@@ -19,7 +19,7 @@ export function generateArticleSchema(article, siteUrl = 'https://modestyloom.co
       name: 'ModestyLoom',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`
+        url: `${siteUrl}/logo.png`
       }
     },
     mainEntityOfPage: {

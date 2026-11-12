@@ -1,13 +1,14 @@
 ---
 import { navItems } from '../data/navigation.js';
+import { siteConfig } from '../data/site.js';
 ---
 
 <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
   <div class="mobile-drawer-content">
     <div>
       <div class="mobile-drawer-header">
-        <a href="/" class="modesty-logo" style="font-size: 1.5rem;">
-          Modesty<span class="logo-accent">Loom</span>
+        <a href="/" class="modesty-logo-brand" aria-label="ModestyLoom Home">
+          <img src={siteConfig.logo?.image || '/logo.png'} alt={siteConfig.name} class="modesty-logo-img" style="height: 32px;" width="156" height="32" />
         </a>
         <button id="closeDrawerBtn" aria-label="Close menu" style="padding: 0.5rem; font-size: 1.25rem;">
           ✕
