@@ -64,7 +64,7 @@ const { post, layout = 'vertical' } = Astro.props;
 )}
 
 {layout === 'overlay' && (
-  <article class="card-hover" style="position: relative; height: 320px; border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: #ffffff;">
+  <article class="card-hover article-card-overlay" style="position: relative; height: 320px; border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: #ffffff;">
     <img 
       src={post.data.featuredImage} 
       alt={post.data.imageAlt} 

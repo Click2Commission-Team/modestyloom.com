@@ -46,9 +46,9 @@ const homeSchema = generateWebsiteSchema();
   <EditorsChoice posts={editorsPicks} />
 
   <!-- 6. Main Feed + Editorial Sidebar Layout (Foxiz Magazine Style) -->
-  <section style="padding: 4rem 0;">
-    <div class="container" style="display: grid; grid-template-columns: 2.3fr 1fr; gap: 3.5rem;">
-      <div>
+  <section class="home-feed-section" style="padding: 4rem 0;">
+    <div class="container content-sidebar-layout">
+      <div class="article-main-col">
         <div class="section-header">
           <h2 class="section-title">Latest Editorial Stories</h2>
           <a href="/blog/" class="section-tagline">View Full Archive →</a>
@@ -68,7 +68,9 @@ const homeSchema = generateWebsiteSchema();
       </div>
 
       <!-- Sidebar -->
-      <Sidebar popularPosts={popularRanking} />
+      <div class="sidebar-wrapper">
+        <Sidebar popularPosts={popularRanking} />
+      </div>
     </div>
   </section>
 </BaseLayout>

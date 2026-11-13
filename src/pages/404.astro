@@ -6,17 +6,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Page Not Found (404) — ModestyLoom"
   description="The requested page could not be located in our editorial archives."
 >
-  <div class="container" style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 1rem;">
-    <span style="font-family: var(--font-display); font-size: 6rem; font-weight: 900; color: var(--accent-gold); line-height: 1; margin-bottom: 1rem;">
+  <div class="container" style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 1rem;">
+    <span style="font-family: var(--font-display); font-size: clamp(4rem, 15vw, 6rem); font-weight: 900; color: var(--accent-gold); line-height: 1; margin-bottom: 1rem;">
       404
     </span>
-    <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">
+    <h1 class="page-hero-title" style="margin-bottom: 1rem;">
       Story Not Found
     </h1>
-    <p style="color: var(--text-secondary); max-width: 500px; font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.6;">
+    <p style="color: var(--text-secondary); max-width: 500px; font-size: clamp(0.95rem, 2.5vw, 1.05rem); margin-bottom: 2rem; line-height: 1.6;">
       The garment silhouette or editorial dispatch you are seeking may have moved or been updated. Let us return you to our primary collections.
     </p>
-    <div style="display: flex; gap: 1rem;">
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
       <a href="/" class="btn-primary">Return to Homepage</a>
       <a href="/blog/" class="btn-secondary">Explore All Stories</a>
     </div>

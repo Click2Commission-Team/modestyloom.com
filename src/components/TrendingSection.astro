@@ -15,7 +15,7 @@ const { posts } = Astro.props;
       <a href="/categories/fashion-trends/" class="section-tagline">View All Trends →</a>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+    <div class="trending-grid">
       {posts.map((post) => (
         <ArticleCard post={post} layout="vertical" />
       ))}

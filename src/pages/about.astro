@@ -7,19 +7,19 @@ import { authors } from '../data/authors.js';
   title="About ModestyLoom — Modern Fashion & Curated Shopping Journal"
   description="Learn about ModestyLoom's editorial mission, our independent product testing standards, and our focus on modesty, elegance, and longevity."
 >
-  <div style="background-color: var(--bg-surface); padding: 4rem 0; border-bottom: 1px solid var(--border-light);">
+  <div class="page-hero-banner">
     <div class="container" style="max-width: 800px; text-align: center;">
       <span class="cat-badge gold" style="margin-bottom: 1rem;">Our Philosophy</span>
-      <h1 style="font-family: var(--font-heading); font-size: 2.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem;">
+      <h1 class="page-hero-title">
         About ModestyLoom
       </h1>
-      <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.6;">
+      <p class="page-hero-desc" style="margin: 0 auto;">
         Bridging the elegance of high-fashion editorial journalism with the discernment of modern shopping discovery.
       </p>
     </div>
   </div>
 
-  <div class="container" style="max-width: 850px; padding-top: 4rem; padding-bottom: 5rem; font-size: 1.05rem; line-height: 1.8;">
+  <div class="container page-content-section" style="max-width: 850px; padding-top: 4rem; padding-bottom: 5rem; font-size: 1.05rem; line-height: 1.8;">
     <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem;">The ModestyLoom Standard</h2>
     <p style="margin-bottom: 1.5rem;">
       Founded with an unwavering dedication to mindful elegance, **ModestyLoom** is an independent fashion publication designed for the modern individual who seeks sophisticated, graceful silhouettes without surrendering to fleeting, disposable micro-trends.
@@ -39,7 +39,7 @@ import { authors } from '../data/authors.js';
     </ul>
 
     <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem;">Meet the Editorial Leadership</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+    <div class="about-leaders-grid">
       {authors.map((author) => (
         <div style="background-color: var(--bg-surface); padding: 1.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); text-align: center;">
           <img src={author.avatar} alt={author.name} style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem;" width="100" height="100" />

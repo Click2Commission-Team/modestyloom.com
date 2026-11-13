@@ -15,7 +15,7 @@ const { posts } = Astro.props;
       <a href="/categories/shopping-guides/" class="section-tagline">Curated Reading →</a>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.5rem;">
+    <div class="editors-grid">
       {posts.map((post) => (
         <ArticleCard post={post} layout="overlay" />
       ))}

@@ -25,9 +25,9 @@ const searchIndex = allPosts.map(p => ({
   title="Search Stories & Guides — ModestyLoom"
   description="Search the complete ModestyLoom fashion archive by title, theme, category, or garment type."
 >
-  <div style="background-color: var(--bg-surface); padding: 3.5rem 0; border-bottom: 1px solid var(--border-light);">
+  <div class="page-hero-banner">
     <div class="container" style="max-width: 850px;">
-      <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 1rem;">
+      <h1 class="page-hero-title">
         Search ModestyLoom
       </h1>
       <div>
@@ -42,8 +42,8 @@ const searchIndex = allPosts.map(p => ({
     </div>
   </div>
 
-  <section class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
-    <div id="resultsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+  <section class="container page-content-section" style="padding-top: 3.5rem; padding-bottom: 5rem;">
+    <div id="resultsGrid" class="cards-grid-auto">
       <!-- Results will render here dynamically -->
     </div>
     <div id="emptyState" style="display: none; text-align: center; padding: 4rem 1rem;">
