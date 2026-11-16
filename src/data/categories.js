@@ -3,7 +3,7 @@ export const categories = [
     slug: 'fashion-trends',
     name: 'Fashion Trends',
     description: 'Deconstruct seasonal catwalks, emerging silhouette movements, color trends, and practical street style transitions for the modern tastemaker.',
-    image: '/images/categories/fashion-trends.jpg',
+    image: 'https://assets.modestyloom.com/images/fashion-trends.webp',
     subcategories: [
       'Latest Fashion Trends',
       'Seasonal Fashion',
@@ -18,7 +18,7 @@ export const categories = [
     slug: 'womens-fashion',
     name: "Women's Fashion",
     description: 'Impeccable styling guides spanning versatile dresses, tailored workwear, graceful ethnic drapery, modern modest outfits, and elevated eveningwear.',
-    image: '/images/categories/womens-fashion.jpg',
+    image: 'https://assets.modestyloom.com/images/womens-fashion.webp',
     subcategories: [
       'Dresses & Outfits',
       'Casual Wear',
@@ -34,7 +34,7 @@ export const categories = [
     slug: 'mens-fashion',
     name: "Men's Fashion",
     description: 'Sharply tailored suits, elevated streetwear, quintessential casual layers, grooming blueprints, and utilitarian accessories for refined gentlemen.',
-    image: '/images/categories/mens-fashion.jpg',
+    image: 'https://assets.modestyloom.com/images/mens-fashion.webp',
     subcategories: [
       'Men\'s Clothing',
       'Streetwear',
@@ -49,7 +49,7 @@ export const categories = [
     slug: 'beauty-personal-care',
     name: 'Beauty & Personal Care',
     description: 'Dermatologist-aligned skincare philosophies, nuanced daily makeup palettes, nourishing haircare rituals, and signature olfactory fragrances.',
-    image: '/images/categories/beauty-personal-care.jpg',
+    image: 'https://assets.modestyloom.com/images/beauty-personal-care.webp',
     subcategories: [
       'Skincare',
       'Makeup',
@@ -64,7 +64,7 @@ export const categories = [
     slug: 'accessories-jewellery',
     name: 'Accessories & Jewellery',
     description: 'The defining accents that anchor an ensemble: heirloom-grade jewellery, artisanal leather handbags, horological timepieces, and eyewear.',
-    image: '/images/categories/accessories-jewellery.jpg',
+    image: 'https://assets.modestyloom.com/images/accessories-jewellery.webp',
     subcategories: [
       'Handbags',
       'Jewellery',
@@ -79,7 +79,7 @@ export const categories = [
     slug: 'footwear',
     name: 'Footwear',
     description: 'From sculptural heels and heritage leather boots to minimalist daily sneakers and ergonomic summer flats engineered for longevity.',
-    image: '/images/categories/footwear.jpg',
+    image: 'https://assets.modestyloom.com/images/footwear.webp',
     subcategories: [
       'Sneakers',
       'Heels',
@@ -94,7 +94,7 @@ export const categories = [
     slug: 'shopping-guides',
     name: 'Shopping Guides & Reviews',
     description: 'Unbiased material comparisons, investment matrix analysis, sizing integrity guides, and verified e-commerce shopping discoveries.',
-    image: '/images/categories/shopping-guides.jpg',
+    image: 'https://assets.modestyloom.com/images/shopping-guides.webp',
     subcategories: [
       'Product Reviews',
       'Buying Guides',
@@ -110,7 +110,7 @@ export const categories = [
     slug: 'sustainable-fashion',
     name: 'Sustainable & Lifestyle Fashion',
     description: 'Conscious textile sourcing, circular fashion ecosystems, capsule wardrobe blueprints, and mindful shopping philosophies for longevity.',
-    image: '/images/categories/sustainable-fashion.jpg',
+    image: 'https://assets.modestyloom.com/images/sustainable-fashion.webp',
     subcategories: [
       'Sustainable Fashion',
       'Minimalist Wardrobe',

@@ -11,7 +11,7 @@ export const products = [
     discount: '23% OFF',
     rating: 4.9,
     reviewsCount: 38,
-    image: '/images/products/linen-trench.jpg',
+    image: 'https://assets.modestyloom.com/images/linen-trench.webp',
     excerpt: 'A fluid, breathable double-breasted trench silhouette featuring horn-effect buttons, belted cuffs, and an adjustable storm flap.',
     description: 'Constructed from a premium 65% European linen and 35% organic cotton blend, this lightweight seasonal trench coat offers effortless modesty, relaxed drape, and architectural shoulder definition suited for city commutes or weekend gallery visits.',
     specs: {
@@ -44,7 +44,7 @@ export const products = [
     discount: '17% OFF',
     rating: 4.8,
     reviewsCount: 52,
-    image: '/images/products/sculpted-tote.jpg',
+    image: 'https://assets.modestyloom.com/images/sculpted-tote.webp',
     excerpt: 'Form meets daily utility with structured base feet, raw-edge hand-painted seams, and a detachable zippered internal pouch.',
     description: 'Handcrafted in limited batches from vegetable-tanned Italian calfskin, the Architectural Sculpted Tote holds a 15-inch laptop alongside daily essentials while maintaining a statuesque, refined exterior profile.',
     specs: {
@@ -76,7 +76,7 @@ export const products = [
     discount: '21% OFF',
     rating: 4.9,
     reviewsCount: 44,
-    image: '/images/products/merino-knit.jpg',
+    image: 'https://assets.modestyloom.com/images/merino-knit.webp',
     excerpt: 'Seamless 3D-knitted gauge from 19.5-micron extra-fine Merino wool for temperature regulation and buttery softness.',
     description: 'Designed as the centerpiece for smart casual layering, this mock-neck sweater bridges clean minimalist Scandinavian aesthetics with thermoregulating wool fibres that resist odor and pill-formation.',
     specs: {
@@ -108,7 +108,7 @@ export const products = [
     discount: '15% OFF',
     rating: 4.8,
     reviewsCount: 67,
-    image: '/images/products/chelsea-boots.jpg',
+    image: 'https://assets.modestyloom.com/images/chelsea-boots.webp',
     excerpt: 'Chunky Vibram Commando lug sole combined with French boxcalf leather and durable elasticated side gussets.',
     description: 'Engineered for all-weather urban terrain without sacrificing bespoke tailoring aesthetics, these Goodyear-welted Chelsea boots can be fully resoled over decades of dependable service.',
     specs: {
@@ -140,7 +140,7 @@ export const products = [
     discount: '18% OFF',
     rating: 5.0,
     reviewsCount: 89,
-    image: '/images/products/barrier-serum.jpg',
+    image: 'https://assets.modestyloom.com/images/barrier-serum.webp',
     excerpt: 'Micro-emulsion of sugarcane-derived squalane, biomimetic phytoceramides, and Centella Asiatica for radiant skin barrier health.',
     description: 'Formulated to restore lipid depletion caused by environmental stress, city pollution, and harsh cleansers. Leaves a velvety non-comedogenic finish that serves as an immaculate primer under daily makeup.',
     specs: {
@@ -171,7 +171,7 @@ export const products = [
     discount: '22% OFF',
     rating: 4.7,
     reviewsCount: 29,
-    image: '/images/products/pleated-skirt.jpg',
+    image: 'https://assets.modestyloom.com/images/pleated-skirt.webp',
     excerpt: 'High-waisted knife pleats engineered to retain crisp movement with an elasticated grosgrain interior band.',
     description: 'An enduring wardrobe staple crafted from recycled crepe georgette with an opaque satin slip lining. Swings fluidly with every stride and transitions effortlessly from boardroom blazers to casual weekend knitwear.',
     specs: {

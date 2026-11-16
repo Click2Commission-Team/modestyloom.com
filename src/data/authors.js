@@ -4,7 +4,7 @@ export const authors = [
     name: 'Tanisha',
     role: 'Editor-in-Chief & Lead Fashion Stylist',
     bio: 'Tanisha is a seasoned fashion journalist and editorial director with over 9 years of experience in couture runways, modern modest styling, capsule wardrobe philosophy, and seasonal forecast analysis.',
-    avatar: '/images/authors/tanisha.jpg',
+    avatar: 'https://assets.modestyloom.com/images/tanisha.webp',
     social: {
       instagram: 'https://instagram.com',
       twitter: 'https://twitter.com',
@@ -16,7 +16,7 @@ export const authors = [
     name: 'Shivam',
     role: 'Senior Menswear Editor & Product Discovery Lead',
     bio: 'Shivam specializes in contemporary tailoring, minimalist menswear essentials, luxury footwear, and investigative e-commerce product architecture.',
-    avatar: '/images/authors/shivam.jpg',
+    avatar: 'https://assets.modestyloom.com/images/shivam.webp',
     social: {
       instagram: 'https://instagram.com',
       twitter: 'https://twitter.com',
