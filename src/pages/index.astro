@@ -26,8 +26,8 @@ const homeSchema = generateWebsiteSchema();
 ---
 
 <BaseLayout
-  title="ModestyLoom — The Premier Fashion, E-Commerce & Styling Publication"
-  description="Discover curated runway trends, modern modest outfits, luxury menswear, everyday beauty rituals, footwear, and verified shopping guides."
+  title="ModestyLoom — The Premier Fashion & Styling Publication"
+  description="Discover curated runway trends, modern modest outfits, luxury menswear, everyday beauty rituals, footwear, and editorial styling guides."
   schema={homeSchema}
 >
   <!-- 1. Interactive Web Stories / Circles Strip -->
@@ -36,8 +36,8 @@ const homeSchema = generateWebsiteSchema();
   <!-- 2. Dominant Editorial Hero Section -->
   <HeroSection mainPost={mainHeroPost} secondaryPosts={secondaryHeroPosts} />
 
-  <!-- 3. Curated Shopping & Product Discovery Showcase -->
-  <ProductGrid products={products.slice(0, 4)} title="Curated Wardrobe Investment Drops" tagline="Browse Full Lookbook" />
+  <!-- 3. Curated Wardrobe & Garment Showcase -->
+  <ProductGrid products={products.slice(0, 4)} title="Curated Wardrobe Investment Drops" tagline="Browse Editorial Pieces" />
 
   <!-- 4. Trending Stories Section -->
   <TrendingSection posts={trendingPosts} />

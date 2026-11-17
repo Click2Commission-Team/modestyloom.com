@@ -55,7 +55,7 @@ export const navItems = [
     href: '/categories/shopping-guides/',
     subItems: [
       { label: 'Product Reviews', href: '/categories/shopping-guides/' },
-      { label: 'Curated Products', href: '/products/' },
+      { label: 'Curated Wardrobe Edits', href: '/products/' },
       { label: 'Capsule Guides', href: '/categories/sustainable-fashion/' },
       { label: 'Brand Comparisons', href: '/categories/shopping-guides/' }
     ]
@@ -66,7 +66,7 @@ export const navItems = [
     subItems: [
       { label: 'About ModestyLoom', href: '/about/' },
       { label: 'Our Editorial Team', href: '/authors/tanisha/' },
-      { label: 'Product Discovery', href: '/products/' },
+      { label: 'Wardrobe Edits', href: '/products/' },
       { label: 'Contact Us', href: '/contact/' },
       { label: 'Privacy Policy', href: '/privacy-policy/' },
       { label: 'Terms & Conditions', href: '/terms-and-conditions/' }

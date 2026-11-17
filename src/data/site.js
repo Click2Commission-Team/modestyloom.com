@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: 'ModestyLoom',
-  title: 'ModestyLoom — The Premier Fashion & E-Commerce Editorial',
+  title: 'ModestyLoom — The Premier Fashion & Styling Publication',
   tagline: 'Elevating Everyday Style With Discerning Curation & Thoughtful Discovery',
-  description: 'ModestyLoom is an authoritative fashion publication and shopping discovery journal covering seasonal trends, wardrobe curation, styling guides, beauty essentials, and verified product reviews.',
+  description: 'ModestyLoom is an authoritative fashion blog and styling journal covering seasonal trends, wardrobe curation, styling guides, beauty essentials, and verified garment analyses.',
   url: 'https://modestyloom.com',
   logoText: 'ModestyLoom',
   logo: {
@@ -19,6 +19,6 @@ export const siteConfig = {
   },
   announcement: {
     enabled: true,
-    text: 'Summer/Pre-Fall Edit: Discover Curated Modest Silhouettes & Capsule Wardrobe Essentials With Free Shipping on Selected Designer Drops!'
+    text: 'Summer/Pre-Fall Edit: Discover Curated Modest Silhouettes & Capsule Wardrobe Guides In Our Latest Editorial Issues!'
   }
 };

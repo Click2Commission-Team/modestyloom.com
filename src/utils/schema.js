@@ -66,13 +66,6 @@ export function generateProductSchema(product, siteUrl = 'https://modestyloom.co
     brand: {
       '@type': 'Brand',
       name: product.brand
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: product.price.replace(/[^0-9.]/g, ''),
-      availability: 'https://schema.org/InStock',
-      url: `${siteUrl}/products/${product.slug}/`
     }
   });
 }

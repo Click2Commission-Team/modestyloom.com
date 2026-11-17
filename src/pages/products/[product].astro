@@ -59,14 +59,9 @@ const combinedSchema = `[${productSchema}, ${breadcrumbSchema}]`;
           {product.title}
         </h1>
 
-        <div style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem;">
-          <span style="font-size: 2rem; font-weight: 800; color: var(--text-primary);">{product.price}</span>
-          {product.originalPrice && (
-            <span style="font-size: 1.2rem; text-decoration: line-through; color: var(--text-muted);">{product.originalPrice}</span>
-          )}
-          {product.discount && (
-            <span class="product-badge" style="position: static;">{product.discount}</span>
-          )}
+        <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; font-weight: 700; color: var(--accent-gold);">
+          <span>★ {product.rating}</span>
+          <span style="font-weight: 400; color: var(--text-muted); font-size: 0.85rem;">({product.reviewsCount} editorial assessments)</span>
         </div>
 
         <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7; overflow-wrap: break-word;">
@@ -104,13 +99,13 @@ const combinedSchema = `[${productSchema}, ${breadcrumbSchema}]`;
           </div>
         </div>
 
-        <!-- Action Button -->
+        <!-- Editorial Blog Action -->
         <div style="margin-top: 1.5rem;">
-          <a href={product.externalUrl} target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; text-align: center; padding: 1rem;">
-            Visit Retailer Official Shop ↗
+          <a href="/blog/" class="btn-primary" style="display: block; width: 100%; text-align: center; padding: 1rem;">
+            Explore Related Fashion Blogs →
           </a>
           <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.6rem; text-align: center;">
-            Editorial Disclosure: ModestyLoom curates independent reviews. When purchasing through our verified links, we may earn an affiliate commission at no extra cost to you.
+            Editorial Note: ModestyLoom is an independent fashion publication. Our garment features reflect honest craftsmanship analyses.
           </p>
         </div>
       </div>
